@@ -1,0 +1,203 @@
+
+.static_data_cache.json
+
+# Ignore bundler config
+.bundle
+
+# Ignore specific Gemfile.lock files
+
+# Ignore local env variables
+/.env.local
+/.env.devbox
+/.env.test.local
+/.make_pr.yaml
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+*/tmp/*
+# Keep the tmp dirs themselves
+!*/tmp/.gitkeep
+*/log/*.log
+/**/log/*.log.*
+**/.DS_Store
+.idea/
+*.iml
+.sass-cache/*
+dump.rdb
+/shared/*
+*.swp
+*.swx
+npm-debug.log
+codestats-debug.log
+tmp_sessions.copy
+mkmf.log
+# Running setup_pipeline_spec.rb generates this file, but it is supposed to be
+# dynamically generated during buildkite builds.
+/composite_pipeline.yml
+/dispatch_pipeline.yml
+
+# UPLOADS
+/public/system/*
+/public/pdfs/*
+/public/sitemap*
+/uploads/*
+
+# ctags
+.tags
+.gemtags
+.tags_sorted_by_file
+
+# precompiled assets
+/public/assets/*
+/public/packs/*.js
+/public/packs/*.png
+/public/packs/*.svg
+/public/packs/*.jpg
+/public/packs/*.jpeg
+/public/packs/*.gif
+/public/packs/manifest.json
+/private/build/source_maps/*.map
+/webpack/assets/javascripts/transmission_graphql/schema.json
+spec/files/all_graphql_queries.json
+
+# sitemaps (which are automatically generated on the servers)
+/public/sitemap.xml.gz
+/public/sitemap1.xml.gz
+
+# All the secrets
+config/secrets
+certs/
+
+# Node modules
+node_modules
+/**/node_modules
+
+# Coverage reports
+/coverage
+/sandbox/dashboard/app/coverage
+/flow-coverage
+/gems/*/coverage
+
+.env.local
+.byebug_history
+
+webpack/.cache
+
+.vscode
+# VS Code js config, only applies to root ('/') as to avoid ignoring Nextjs's jsconfig.json
+/jsconfig.json
+
+/public/sitemap.xml.gz
+/public/sitemap1.xml.gz
+
+# Temporary folder for build scripts.
+# Used by script/build_stats/buildkite_pr.sh
+script/__preserved_build_stats
+
+# temporary files for inttra validator
+C\:\\edi_tool\\*
+
+# generated when running `bundle exec spring binstub --all`
+bin/rspec
+bin/spring
+
+component_usage.json
+
+# Don't check in relay graphql files (we automatically regenerate them)
+migratory_modules/__generated__/*
+
+# Don't check in the relay persisted queries json
+webpack/assets/javascripts/relay/queries.json
+
+# Allow .tmp and .temp extensions for ignored files everywhere
+*.tmp
+*.temp
+
+# Ignore Excel tmp files
+~$*.xlsx
+
+# Ignore ERD config
+.erdconfig
+
+# Ignore error logs
+yarn-error.log
+
+# Ignore sorbet error log
+sorbet/rbi/hidden-definitions/errors.txt
+
+# Makefile is created during some Sorbet operations
+Makefile
+
+# This is the suggested file name for Sorbet coverage stats
+metrics.json
+
+# Local terraform state and generated files
+terraform.tfstate
+terraform.tfstate.backup
+
+# RefreshEnv config and state
+.refresh_env_cfg.yml
+
+# Ignore compile output for data model generator
+script/datamodel/*/bin/*
+script/datamodel/*/obj/*
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+!BUILD
+
+# Ignore Gradle build output directory...
+/build/
+
+# ... but don't ignore docker base builds
+!**/docker/base/build
+!**/docker/services/base/build
+!bazel_remote_cache/monitor/docker/build
+
+# Cached Python objects
+*__pycache__*
+
+# Jupyter notebook checkpoints
+*.ipynb_checkpoints*
+
+# vscode java
+.project
+.settings
+.classpath
+
+# vscode solargraph autocomplete
+.solargraph.yml
+
+# jenv
+.java-version
+
+# Bazel
+bazel-*
+!bazel-*.sh
+.ijwb
+
+# Bazel profiles
+**.profile.gz
+
+# Bazel generated files
+**/infra/.generated/hooks/run_service.sh
+
+# Build output artifacts
+/artifacts
+
+# Docker local override configuration
+docker-compose.override.yml
+
+# Devbox docker compose
+docker-compose.devbox.yml
+
+# Scala tools
+.metals/
+
+# Ignore docker sandboxing
+**/infra/.sandbox/
+
+# .direnv scratch space
+.direnv/
