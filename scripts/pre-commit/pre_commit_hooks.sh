@@ -57,7 +57,7 @@ JS_JSX_JSON_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR 
 if [ -n "$JS_JSX_JSON_DIFFED_FILES" ]; then
   echo "$JS_JSX_JSON_DIFFED_FILES"
   # Ensure there aren't prettier problems.
-  echo "Running prettier"
+  echo "Running prettier..."
   set +e
   PRETTIER_FILES=$(echo "$JS_JSX_JSON_DIFFED_FILES" | xargs yarn run --silent prettier --list-different 2>/dev/null)
   set -e
@@ -70,21 +70,26 @@ if [ -n "$JS_JSX_JSON_DIFFED_FILES" ]; then
   echo "prettier complete!"
 fi
 
-# Run flow on changed files.
 JS_JSX_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.jsx' '*.js'`
 if [ -n "$JS_JSX_DIFFED_FILES" ]; then
   # Ensure there aren't eslint problems.
-  echo "Running eslint"
-  set +e
-  ESLINT_FILES=$(echo "$JS_JSX_DIFFED_FILES" | xargs yarn eslint 2>/dev/null)
-  set -e
-  if [ -n "$ESLINT_FILES" ]; then
-    echo "Your files aren't aren't linted correctly. Please fix them and try again."
-    echo "running yarn run eslint --fix"
-    yarn run eslint --fix $JS_JSX_DIFFED_FILES
+  echo "Running eslint..."
+  if echo "$JS_JSX_DIFFED_FILES" | xargs yarn eslint ; then
+    : # no-op
+  else
+    e=$? # return code from if
+    if [ "${e}" -eq "1" ]; then
+      echo "Your files aren't aren't linted correctly. Attempting to fix for you..."
+      echo "running yarn run eslint --fix $JS_JSX_DIFFED_FILES"
+      yarn run eslint --fix $JS_JSX_DIFFED_FILES
+    elif [ "${e}" -gt "1" ]; then
+      echo "yarn eslint returned an exit code > 1."
+      exit ${e}
+    fi
   fi
   echo "eslint complete!"
 
+  # Run flow on changed files.
   echo "$JS_JSX_DIFFED_FILES"
   # Ensure types check out
   echo "Running strict flow checks..."
