@@ -1,42 +1,11 @@
 # Checked-in 3rd party code
-api_docs/source/javascripts/lib/**/*
-app/assets/javascripts/vendor/**/*
-public/javascripts/vendor
 **/flow-typed-overrides/**/*
 **/flow-typed/**/*
 **/.yarn/**/*
+package.json
 
-# Build artifacts
-app/assets/javascripts/*
-coverage/assets/0.7.1/application.js
 **/node_modules/**/*
-tmp/**/*
-vendor/**/*
+**/tmp/**
+**/temp/**
 public/packs/**/*
 external/**/*
-
-# generated files
-*.generated.js
-RouteConstants.js
-auto-gen-graphql-flow.jsx
-
-# test data
-*.fixture.js
-
-# Comunity dev tools
-env-improvement/**/*
-
-# webpack configuration generated files
-webpack/config.builder.js
-webpack/config.common.js
-webpack/config.dev.js
-webpack/config.devserver.hot.js
-webpack/config.devserver.js
-webpack/entryPoints.js
-
-# service generated files
-graphql_gateway/dist/**/*.js
-common/javascript/service-lookup/index.js
-
-# this one looks generated, but there's no source file anymore?
-webpack/config.fast_deps.js

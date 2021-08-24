@@ -1,6 +1,4 @@
-/**
- * @flow strict-local
- */
+/* @flow strict */
 
 const x = (z: number): boolean => {
   let y = 10;

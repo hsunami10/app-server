@@ -160,7 +160,14 @@ rules:
     - error
     - excludeParameterMatch: "^_"
       excludeArrowFunctions: true
-  flowtype/require-valid-file-annotation: [error, always]
+  flowtype/require-valid-file-annotation: [
+    error,
+    always,
+    {
+      "annotationStyle": block,
+      "strict": true,
+    }
+  ]
   flowtype/semi: [error, always]
   flowtype/space-before-type-colon: [error, never]
   flowtype/space-before-generic-bracket: [error, never]

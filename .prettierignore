@@ -2,3 +2,4 @@ package.json
 *__generated__*
 webpack/assets/javascripts/relay/queries.json
 **/.yarn/**
+**/flow-typed/**

@@ -40,7 +40,8 @@ untyped-type-import
 ; <PROJECT_ROOT>/lib/.*
 ; <PROJECT_ROOT>/db/.*
 ; <PROJECT_ROOT>/config/.*
-; <PROJECT_ROOT>/tmp/.*
-; <PROJECT_ROOT>/log/.*
-<PROJECT_ROOT>/.git/.*
+.*/tmp/.*
+.*/log/.*
+.*/temp/.*
+.*/.git/.*
 .*/public/**/*

@@ -31,7 +31,6 @@
     "@graphql-tools/schema": "^8.1.2",
     "apollo-server-express": "^3.1.2",
     "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
@@ -42,6 +41,7 @@
   },
   "scripts": {
     "babel-node": "BABEL_ENV=node babel-node",
-    "flow": "flow"
+    "eslint": "eslint --ext .js,.jsx",
+    "install": "yarn run flow-typed install"
   }
 }
