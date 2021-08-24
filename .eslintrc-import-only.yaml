@@ -1,0 +1,26 @@
+# TEAM: frontend_infra
+#
+# The bare minimum set of configs to run import rules.
+# This is extracted from .eslintrc.yaml because running
+# them takes a long time (longer than all of the other
+# rules combined at the time of the split).
+
+# This file will overwrite .eslintrc.yaml for the
+# "ESLint Import Only" CI run.
+extends:
+  - airbnb-base/rules/imports
+
+parser: "babel-eslint"
+
+plugins:
+  - flexport # used by nextjs/.eslintrc.yaml
+
+rules:
+  import/default: error
+  import/no-unresolved: error
+  import/no-self-import: error
+  import/extensions: [error, ignorePackages, {"js": "never", "jsx": "never"}]
+
+  # TODO(bryan): Turn this on
+  import/no-extraneous-dependencies: off
+  

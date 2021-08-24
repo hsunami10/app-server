@@ -1,7 +1,7 @@
 {
   "name": "app-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "private": true,
   "repository": "git@github.com:hsunami10/app-server.git",
   "author": "Michael Hsu <michael100.hsu@gmail.com>",

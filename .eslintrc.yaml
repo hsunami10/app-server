@@ -6,11 +6,16 @@ plugins:
   - lodash
   - jest
   - autofix
+  - flowtype
 
 env:
   node: true
   jest/globals: true
   es2021: true
+
+settings:
+  flowtype:
+    onlyFilesWithFlowAnnotation: false
 
 parser: "@babel/eslint-parser"
 
@@ -133,6 +138,48 @@ rules:
       "argsIgnorePattern": "^_"
     }
   ]
+
+  #######################
+  # FLOWTYPE PLUGIN RULES
+  #######################
+
+  flowtype/boolean-style: [error, boolean]
+  flowtype/define-flow-type: error
+  flowtype/delimiter-dangle: off
+  flowtype/no-dupe-keys: error
+  flowtype/no-primitive-constructor-types: error
+  flowtype/no-weak-types: [
+    error,
+    {
+      "any": false,
+      "Object": true,
+      "Function": true,
+    }
+  ]
+  flowtype/require-parameter-type:
+    - error
+    - excludeParameterMatch: "^_"
+      excludeArrowFunctions: true
+  flowtype/require-valid-file-annotation: [error, always]
+  flowtype/semi: [error, always]
+  flowtype/space-before-type-colon: [error, never]
+  flowtype/space-before-generic-bracket: [error, never]
+  flowtype/type-id-match: [error, "^\\$?([A-Z][a-z0-9]*)+"]
+  flowtype/union-intersection-spacing: [error, always]
+  flowtype/use-flow-type: [error]
+  flowtype/no-types-missing-file-annotation: [error]
+
+  # rules disabled for now due to amount of work needed
+  flowtype/require-return-type: off
+  flowtype/require-variable-type: off
+
+  # rules disabled because there's no good reason to enable
+  flowtype/sort-keys: off
+
+  # Cosmetic rules disabled because we use prettier
+  flowtype/generic-spacing: off
+  flowtype/space-after-colon: off
+  flowtype/object-type-delimiter: off
 
   # TODO: Replace with custom eslint rules.
 
