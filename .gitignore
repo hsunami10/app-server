@@ -6,11 +6,9 @@
 
 # Ignore specific Gemfile.lock files
 
-# Ignore local env variables
-/.env.local
-/.env.devbox
-/.env.test.local
-/.make_pr.yaml
+
+# Ignore env variables
+.env*
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -79,7 +77,6 @@ node_modules
 /flow-coverage
 /gems/*/coverage
 
-.env.local
 .byebug_history
 
 webpack/.cache
@@ -90,19 +87,6 @@ webpack/.cache
 
 /public/sitemap.xml.gz
 /public/sitemap1.xml.gz
-
-# Temporary folder for build scripts.
-# Used by script/build_stats/buildkite_pr.sh
-script/__preserved_build_stats
-
-# temporary files for inttra validator
-C\:\\edi_tool\\*
-
-# generated when running `bundle exec spring binstub --all`
-bin/rspec
-bin/spring
-
-component_usage.json
 
 # Don't check in relay graphql files (we automatically regenerate them)
 migratory_modules/__generated__/*
@@ -117,87 +101,8 @@ webpack/assets/javascripts/relay/queries.json
 # Ignore Excel tmp files
 ~$*.xlsx
 
-# Ignore ERD config
-.erdconfig
-
 # Ignore error logs
 yarn-error.log
 
-# Ignore sorbet error log
-sorbet/rbi/hidden-definitions/errors.txt
-
-# Makefile is created during some Sorbet operations
-Makefile
-
-# This is the suggested file name for Sorbet coverage stats
-metrics.json
-
-# Local terraform state and generated files
-terraform.tfstate
-terraform.tfstate.backup
-
 # RefreshEnv config and state
 .refresh_env_cfg.yml
-
-# Ignore compile output for data model generator
-script/datamodel/*/bin/*
-script/datamodel/*/obj/*
-
-# Ignore Gradle project-specific cache directory
-.gradle
-
-!BUILD
-
-# Ignore Gradle build output directory...
-/build/
-
-# ... but don't ignore docker base builds
-!**/docker/base/build
-!**/docker/services/base/build
-!bazel_remote_cache/monitor/docker/build
-
-# Cached Python objects
-*__pycache__*
-
-# Jupyter notebook checkpoints
-*.ipynb_checkpoints*
-
-# vscode java
-.project
-.settings
-.classpath
-
-# vscode solargraph autocomplete
-.solargraph.yml
-
-# jenv
-.java-version
-
-# Bazel
-bazel-*
-!bazel-*.sh
-.ijwb
-
-# Bazel profiles
-**.profile.gz
-
-# Bazel generated files
-**/infra/.generated/hooks/run_service.sh
-
-# Build output artifacts
-/artifacts
-
-# Docker local override configuration
-docker-compose.override.yml
-
-# Devbox docker compose
-docker-compose.devbox.yml
-
-# Scala tools
-.metals/
-
-# Ignore docker sandboxing
-**/infra/.sandbox/
-
-# .direnv scratch space
-.direnv/
