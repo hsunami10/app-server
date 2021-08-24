@@ -3,4 +3,4 @@ const x = () => {
   return y === 20;
 };
 
-console.log('asdf');
+// console.log('asdf');
