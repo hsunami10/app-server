@@ -1,0 +1,46 @@
+[options]
+emoji=true
+suppress_type=$FlowFixMeProps
+suppress_type=$FlowFixMeState
+include_warnings=false
+sharedmemory.hash_table_pow=21
+
+[lints]
+all=off
+unnecessary-invariant=error
+untyped-type-import=error
+
+[libs]
+./flow-typed-overrides
+.*/node_modules/graphql/*
+
+[strict]
+nonstrict-import
+sketchy-null
+sketchy-number
+unclear-type
+unnecessary-invariant
+unnecessary-optional-chain
+unsafe-getters-setters
+untyped-import
+untyped-type-import
+
+[declarations]
+<PROJECT_ROOT>/node_modules/.*
+
+[untyped]
+.*/node_modules/react-select/
+
+[ignore]
+.*/node_modules/editions/*
+.*/node_modules/graphql/*
+.*/node_modules/jsonlint-lines/*
+.*/node_modules/flow-coverage-report/*
+.*/node_modules/unflowify/*
+; <PROJECT_ROOT>/lib/.*
+; <PROJECT_ROOT>/db/.*
+; <PROJECT_ROOT>/config/.*
+; <PROJECT_ROOT>/tmp/.*
+; <PROJECT_ROOT>/log/.*
+<PROJECT_ROOT>/.git/.*
+.*/public/**/*

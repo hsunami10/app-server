@@ -1,8 +1,10 @@
-/** @flow strict-local */
+/**
+ * @flow strict-local
+ */
 
-const x = z => {
+const x = (z: number): boolean => {
   let y = 10;
-  return y == 20;
+  return y === z;
 };
 
 export default x;
