@@ -7,15 +7,15 @@ gitroot=$(git rev-parse --show-toplevel || echo ".")
 if [ ! -d "${gitroot}" ]; then
     exit 1
 fi
- 
+
 # Determine whether a merge is in progress.
 # From: https://stackoverflow.com/a/30783114
-if [ -f .git/MERGE_HEAD ]
-then
-  is_merge_in_progress=true
-else
-  is_merge_in_progress=false
-fi
+# if [ -f .git/MERGE_HEAD ]
+# then
+#   is_merge_in_progress=true
+# else
+#   is_merge_in_progress=false
+# fi
 
 ALL_DIFFED_FILES=$(git diff --cached --name-only | tr '\n' ' ')
 
