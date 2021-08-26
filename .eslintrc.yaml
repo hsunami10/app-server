@@ -74,7 +74,6 @@ rules:
   # We use leading underscores
   no-underscore-dangle: 0
   no-use-before-define: 0
-  no-unused-vars: error
 
   # Shadowing isn't a very difficult concept. --dmnd
   no-shadow: 0
@@ -178,7 +177,12 @@ rules:
     - prefer-double
   autofix/indent:
     - error
-    - tab
+    - 2
+  autofix/no-unused-vars:
+    - error
+    - vars: all
+      args: all
+      argsIgnorePattern: ^_
   autofix/spaced-comment:
     - error
     - always
