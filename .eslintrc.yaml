@@ -1,16 +1,20 @@
+# Tutorials:
+# https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
+# https://www.w3schools.io/file/yaml-arrays/
+
 extends:
   - prettier
 
 plugins:
   - import
   - lodash
-  - jest
+  # - jest
   - autofix
   - flowtype
 
 env:
   node: true
-  jest/globals: true
+  # jest/globals: true
   es2021: true
 
 settings:
@@ -22,10 +26,9 @@ settings:
 parser: "@babel/eslint-parser"
 
 rules:
-  arrow-body-style: [error, as-needed]
   camelcase: [error, { properties: always, ignoreDestructuring: false }]
-  eqeqeq: ["error", "always", { null: "never" }]
-  no-console: error
+  # Disabled for nodejs. Enable this for front-end.
+  no-console: 0
   no-constant-condition: error
   no-redeclare: [error, { builtinGlobals: true }]
   no-restricted-imports:
@@ -68,11 +71,10 @@ rules:
           ],
       },
     ]
-  spaced-comment:
-    ["error", "always", { "exceptions": ["/"], "markers": ["::", "="] }]
   # We use leading underscores
   no-underscore-dangle: 0
   no-use-before-define: 0
+  no-unused-vars: error
 
   # Shadowing isn't a very difficult concept. --dmnd
   no-shadow: 0
@@ -96,8 +98,22 @@ rules:
   # IMPORT PLUGIN RULES
   #####################
 
-  # If you change something related to the import/* rules, also change it in
-  # .eslintrc-import-only.yaml and possibly .eslintrc-without-import.yaml
+  import/default: error
+  import/extensions: [error, ignorePackages, { js: never, jsx: never }]
+  import/first: error
+  import/named: error
+  import/no-commonjs: error
+  import/no-dynamic-require: error
+  import/no-extraneous-dependencies: error
+  import/no-import-module-exports: error
+  import/no-mutable-exports: error
+  import/no-relative-packages: error
+  import/no-self-import: error
+  import/no-unassigned-import: error
+  import/no-unresolved: error
+  import/no-unused-modules: error
+  import/no-useless-path-segments: [error, { noUselessIndex: true }]
+  import/no-webpack-loader-syntax: error
   import/order:
     [
       error,
@@ -115,42 +131,65 @@ rules:
         newlines-between: always,
       },
     ]
-  import/default: error
-  import/no-unresolved: error
-  import/no-self-import: error
-  import/extensions: [error, ignorePackages, { js: never, jsx: never }]
-  import/no-relative-packages: error
-  import/no-extraneous-dependencies: error
-  import/named: error
 
   #####################
   # LODASH PLUGIN RULES
   #####################
+
   lodash/callback-binding: error
   lodash/no-extra-args: error
   lodash/unwrap: error
   lodash/collection-return: error
   lodash/no-double-unwrap: error
   lodash/no-unbound-this: error
-  lodash/import-scope: [error, member]
+  lodash/import-scope:
+    - error
+    - member
 
   ######################
   # AUTOFIX CUSTOM RULES
   ######################
 
-  # Replace no-unused-vars with an autofixable version
-  no-unused-vars: 0
-  autofix/no-unused-vars:
-    [
-      error,
-      {
-        "vars": "all",
-        "args": "all",
-        "ignoreRestSiblings": true,
-        "varsIgnorePattern": "^_",
-        "argsIgnorePattern": "^_",
-      },
-    ]
+  autofix/array-bracket-newline:
+    - error
+    - multiline: true
+  autofix/arrow-body-style:
+    - error
+    - as-needed
+  autofix/arrow-parens:
+    - error
+    - as-needed
+  autofix/capitalized-comments:
+    - error
+    - always
+    - ignorePattern: "console"
+      ignoreInlineComments: true
+      ignoreConsecutiveComments: true
+  autofix/dot-notation:
+    - error
+    - allowKeywords: false
+  autofix/eqeqeq:
+    - error
+    - always
+    - null: never
+  autofix/implicit-arrow-linebreak: error
+  autofix/jsx-quotes:
+    - error
+    - prefer-double
+  autofix/indent:
+    - error
+    - tab
+  autofix/spaced-comment:
+    - error
+    - always
+    - exceptions: ["/", "-+", "*", "-", "="]
+      markers:
+        - "::"
+        - "="
+  autofix/no-plusplus: error
+  autofix/valid-typeof:
+    - error
+    - requireStringLiterals: true
 
   #######################
   # FLOWTYPE PLUGIN RULES
@@ -188,246 +227,7 @@ rules:
   flowtype/generic-spacing: off
   flowtype/space-after-colon: off
   flowtype/object-type-delimiter: off
-  # TODO: Replace with custom eslint rules.
-  #######################
-  # FLEXPORT CUSTOM RULES
-  #######################
-  # flexport/must-have-team: [error]
-  # flexport/no-bound-react-lifecycle-methods: [error]
-  # flexport/no-buttons-without-type: [error]
-  # flexport/no-componentDidMount-leaks: [error]
-  # flexport/no-dangerous-store-use: [error]
-  # flexport/no-disabled-anchors: [error]
-  # flexport/no-dollar-sign-react-types: [error]
-  # flexport/no-event-handler-methods: [error]
-  # flexport/no-external-graphql-imports: [error]
-  # flexport/no-href-on-buttons: [error]
-  # flexport/no-setState-in-constructor: [error]
-  # flexport/no-ugly-buttons: [error]
-  # flexport/no-unknown-styles: [error]
-  # flexport/no-unsafe-test-hook: [error]
-  # flexport/no-unused-aphrodite-styles: [error]
-  # flexport/no-unused-handlers: [error]
-  # flexport/no-oocss: [error]
-  # flexport/password-must-have-data-sensitive: [error]
-  # flexport/prefer-includes-to-indexOf: [error]
-  # flexport/puritan-extends-component: [error]
-  # flexport/use-date-dot-now: [error]
-  # flexport/no-relative-imports: [error]
-  # flexport/no-render-props-as-methods: [error]
-  # flexport/dynamic-import-webchunkname: [error]
-  # flexport/no-image-dynamic-imports: [error]
-  # flexport/no-imports-above-root:
-  #   - error
-  #   - topLevelDirectory: flexport/webpack/assets/javascripts/
-  #     rootPaths:
-  #       - air/
-  #       - capital/
-  #       - config_app/
-  #       - customs/
-  #       - example/
-  #       - graph/
-  #       - iam/
-  #       - jetski_work_queues/
-  #       - messaging/
-  #       - origin_ops/
-  #       - partner_ops/
-  #       - pro_serve/
-  #       - squad_workqueues/
-  #       - trucking_procurement/
-  #       - warehouse_loads/
-  #       - ocean/
-  #       - action_logs/
-  #       - workflow/
-  #       - rules_engine/
-  #       - consol/
-  #       - storage_service/
-  #       - execution/
-  #       - dangerous_goods/
-  #       - document_management/
-  #       - accounts_payable/
-  #       - work_items/
-  #     legacyRootPaths:
-  #       # New apps/experiences/views should be added to "rootPaths:", which
-  #       # disallows access to flux global directories (stores, types, etc).
-  #       # Only use legacyRootPaths for legacy directories that use these.
-  #       - dispatch/
-  #     # Note: This list is not comprehensive. Feel free to add but please
-  #     # follow the semantics outlined below.
-  #     allowedPrefixes:
-  #       # There are several types of shared JS code, split into sections.
-  #       # Please add to the appropriate section.
-  #       #
-  #       # ======================================
-  #       # ALLOWED PREFIXES SECTION 1: COMPONENTS
-  #       # ======================================
-  #       # Components that should (or could) be latitude components.
-  #       # These components should NOT use stores or make network requests.
-  #       # We have to expand tools/ because there are bunch of app-specific
-  #       # or network-enabled components in there we don't want to allow.
-  #       # Possible long-term location: common/latitude or common/components
-  #       - components/base_candidate/
-  #       - components/deprecated/
-  #       - components/form/
-  #       - components/information_cards/
-  #       - components/maps/
-  #       - components/nav/
-  #       - components/network/address
-  #       - components/network/VerifiedBadge
-  #       - components/table/
-  #       - components/BodyPortalWrapper
-  #       - components/deprecated/DeprecatedDirectionalDropdown
-  #       - components/deprecated/DeprecatedFuzzySearch
-  #       - components/deprecated/DeprecatedModal
-  #       - components/deprecated/DeprecatedImage
-  #       - components/deprecated/DeprecatedRotate
-  #       - components/deprecated/DeprecatedStickyFooter
-  #       - components/deprecated/DeprecatedTabHeader
-  #       - longitude/
-  #       - latitude/
-  #       - migration/
-  #       #
-  #       # ===================================
-  #       # ALLOWED PREFIXES SECTION 2: WIDGETS
-  #       # ===================================
-  #       # Components that use stores or make network requests but should be
-  #       # shared long-term. We should distinguish them from the dumb atomic
-  #       # UI components above because they sometimes make assumptions about
-  #       # their context that aren't encoded in their React props, e.g. about
-  #       # certain endpoints being exposed.
-  #       # Perhaps we should call them widgets or something?
-  #       # Possible long-term location: common/widgets
-  #       - components/users/UserAvatar
-  #       - components/notifications
-  #       - components/metadata/SchemaEntityTakeover
-  #       #
-  #       # ==================================
-  #       # ALLOWED PREFIXES SECTION 3: STYLES
-  #       # ==================================
-  #       # Shared styles.
-  #       # Possible long-term location: common/styles
-  #       - styles/
-  #       - vendor_stylesheets/rc-tooltip.css
-  #       - tools/zIndices
-  #       #
-  #       # =================================
-  #       # ALLOWED PREFIXES SECTION 4: TOOLS
-  #       # =================================
-  #       # Shared tools. These should be use-case agnostic libraries rather
-  #       # than app- or view-specific. We have to expand tools/ because
-  #       # there are bunch of app-specific tools in there we don't want to allow.
-  #       # Possible long-term location: common/lib or common/tools or common/infra
-  #       - apollo
-  #       - components/network/AddressSearchTools
-  #       - components/network/location/tools/isLocationValid
-  #       - components/platform/messaging/MessagingApplication
-  #       - flexport-shared/src
-  #       - hooks
-  #       - infra
-  #       - tools/addresses
-  #       - tools/addressTools/addressOptionTools
-  #       - tools/addressTools/getCustomsManufacturerCode
-  #       - tools/addressTools/getFormattedAddress
-  #       - tools/alt_lodash
-  #       - tools/amplitude
-  #       - tools/apiRequest
-  #       - tools/BeforeNavigate
-  #       - tools/betterGroupBy
-  #       - tools/bootstrap/bootstrapDataType
-  #       - tools/bootstrap/createBrowserAppLoader
-  #       - tools/bootstrap/launchWhenReady
-  #       - tools/cancelablePromise
-  #       - tools/CargoTools
-  #       - tools/CarrierBookingTools
-  #       - tools/countries/countryByCode
-  #       - tools/displayAjaxErrorModal
-  #       - tools/displayErrorModal
-  #       - tools/downloadCsv
-  #       - tools/enum
-  #       - tools/flatMap
-  #       - tools/flexportApiFetch
-  #       - tools/forwarding_util
-  #       - tools/graphicIcons
-  #       - tools/graphql/enum
-  #       - tools/graphql/GraphQLError
-  #       - tools/graphql/narrowConnection
-  #       - tools/graphql/whenCommitMutation
-  #       - tools/graphql/whenCommitMutationUnion
-  #       - tools/icons
-  #       - tools/initPresence
-  #       - tools/invariant
-  #       - tools/jest/makePreloadedDynamicRoutes
-  #       - tools/logout
-  #       - tools/workspaces
-  #       - tools/logEvent
-  #       - tools/maps
-  #       - tools/performanceTools
-  #       - tools/popupWithClickAway
-  #       - tools/recursive_rate_tools
-  #       - tools/relay
-  #       - tools/router
-  #       - tools/sentry
-  #       - tools/setupImportCallbacks
-  #       - tools/test/relay/mockFragmentRef
-  #       - tools/test/relay/mockRef
-  #       - tools/trackAndTrace
-  #       - tools/unit_amount_tools
-  #       - tools/updatePurenessConfig
-  #       - tools/wallTimeTools
-  #       - tools/CopyToClipboard
-  #       - tools/DateTools
-  #       - tools/ImageScaler
-  #       - tools/SessionChecker
-  #       - tools/UrlTools
-  #       - tools/UserDataHelpers
-  #       - tools/TextFormatTools
-  #       - tools/titleize
-  #       - tools/Pdfparser
-  #       - vendor/vendor
-  #       - tools/currency
-  #       - tools/money/Money
-  #       - tools/isIframed
-  #       - tools/getFullStoryLink
-  #       - common/
-  #       #
-  #       # =========================================
-  #       # ALLOWED PREFIXES SECTION 5: TEAM SPECIFIC
-  #       # =========================================
-  #       # Presentational components used by a specific team.
-  #       - trucking/shared
-  #       - rules_engine/shared
-  #       - components/new_carrier_bookings/form/CarrierBookingTakeover
-  #       - components/new_carrier_bookings/form/types
-  #       #
-  #       # ===============================
-  #       # ALLOWED PREFIXES SECTION 6: ETC
-  #       # ===============================
-  #       # Shared code that maintains some state. Not sure how to categorize
-  #       # these. Similar to the "widgets" above.
-  #       - services/
-  #       - context/
-  #       # node_modules whose usage requires paths.
-  #       # (Ideally the eslint rule would detect and permit these programmatically.)
-  #       - rc-slider
-  #       - react-puritan
-  #       - uuid
-  #       - here-js-api
-  #       # Relay.
-  #       - __generated__/
-  #       - relay/environment
-  #       - relay/toGlobalId
-  #       # Things that probably shouldn't be globally namespaced anymore.
-  #       - constants/
-  #       - singletons/BootstrapDataSingleton
-  #     legacyAllowedPrefixes:
-  #       - actions/
-  #       - connectors/
-  #       - mixins/
-  #       - stores/
-  #       - types/
-  #       - components/network/Types
-  # flexport/jsx-must-contain-jsx: [error]
-  # flexport/no-react-default-imports: [error]
-  # flexport/no-functional-default-props: [error]
-  # flexport/graphql-queries-must-have-types: [error]
-  # flexport/no-fragment-container-component-definitions: [error]
+
+  ################################
+  # TODO: Add custom eslint rules.
+  ################################

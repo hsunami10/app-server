@@ -5,5 +5,7 @@ const x = (z: number): boolean => {
   return y === z;
 };
 
+console.log("hello");
+
 export default x;
-// console.log('asdf');
+console.log("asdf");
