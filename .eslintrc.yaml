@@ -16,24 +16,18 @@ env:
 settings:
   flowtype:
     onlyFilesWithFlowAnnotation: false
+  import/ignore:
+    - node_modules
 
 parser: "@babel/eslint-parser"
 
 rules:
-  arrow-body-style:
-    [error, as-needed]
-  camelcase:
-    [
-      error,
-      {
-        properties: always,
-        ignoreDestructuring: false,
-      }
-    ]
-  eqeqeq: ['error', 'always', { null: 'never' }]
+  arrow-body-style: [error, as-needed]
+  camelcase: [error, { properties: always, ignoreDestructuring: false }]
+  eqeqeq: ["error", "always", { null: "never" }]
   no-console: error
   no-constant-condition: error
-  no-redeclare: [error, {builtinGlobals: true}]
+  no-redeclare: [error, { builtinGlobals: true }]
   no-restricted-imports:
     [
       error,
@@ -75,7 +69,7 @@ rules:
       },
     ]
   spaced-comment:
-    ["error", "always", {"exceptions": ["/"], "markers": ["::", "="]}]
+    ["error", "always", { "exceptions": ["/"], "markers": ["::", "="] }]
   # We use leading underscores
   no-underscore-dangle: 0
   no-use-before-define: 0
@@ -85,14 +79,14 @@ rules:
 
   # We want to be able to write named functional components
   prefer-arrow-callback:
-    [error, {allowNamedFunctions: true, allowUnboundThis: true}]
+    [error, { allowNamedFunctions: true, allowUnboundThis: true }]
 
   prefer-object-spread: error
 
   # airbnb uses "allowEmptyReject": true, but unhandled empty promise rejections
   # cause essentially useless sentry errors. It's more valuable to limit promise rejections
   # to error handling specifically.
-  prefer-promise-reject-errors: ["error", {"allowEmptyReject": false}]
+  prefer-promise-reject-errors: [error, { allowEmptyReject: false }]
 
   # This isn't very valuable when we have static types, and it gets confused by
   # invariant.
@@ -104,12 +98,30 @@ rules:
 
   # If you change something related to the import/* rules, also change it in
   # .eslintrc-import-only.yaml and possibly .eslintrc-without-import.yaml
+  import/order:
+    [
+      error,
+      {
+        groups:
+          [
+            builtin,
+            external,
+            internal,
+            [parent, sibling, index],
+            object,
+            type,
+            unknown,
+          ],
+        newlines-between: always,
+      },
+    ]
   import/default: error
   import/no-unresolved: error
   import/no-self-import: error
-  import/extensions: [error, ignorePackages, {"js": "never", "jsx": "never"}]
-
+  import/extensions: [error, ignorePackages, { js: never, jsx: never }]
+  import/no-relative-packages: error
   import/no-extraneous-dependencies: error
+  import/named: error
 
   #####################
   # LODASH PLUGIN RULES
@@ -128,16 +140,17 @@ rules:
 
   # Replace no-unused-vars with an autofixable version
   no-unused-vars: 0
-  autofix/no-unused-vars: [
-    "error",
-    {
-      "vars": "all",
-      "args": "all",
-      "ignoreRestSiblings": true,
-      "varsIgnorePattern": "^_",
-      "argsIgnorePattern": "^_"
-    }
-  ]
+  autofix/no-unused-vars:
+    [
+      error,
+      {
+        "vars": "all",
+        "args": "all",
+        "ignoreRestSiblings": true,
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_",
+      },
+    ]
 
   #######################
   # FLOWTYPE PLUGIN RULES
@@ -148,26 +161,14 @@ rules:
   flowtype/delimiter-dangle: off
   flowtype/no-dupe-keys: error
   flowtype/no-primitive-constructor-types: error
-  flowtype/no-weak-types: [
-    error,
-    {
-      "any": false,
-      "Object": true,
-      "Function": true,
-    }
-  ]
+  flowtype/no-weak-types:
+    [error, { "any": false, "Object": true, "Function": true }]
   flowtype/require-parameter-type:
     - error
     - excludeParameterMatch: "^_"
       excludeArrowFunctions: true
-  flowtype/require-valid-file-annotation: [
-    error,
-    always,
-    {
-      "annotationStyle": block,
-      "strict": true,
-    }
-  ]
+  flowtype/require-valid-file-annotation:
+    [error, always, { "annotationStyle": block, "strict": true }]
   flowtype/semi: [error, always]
   flowtype/space-before-type-colon: [error, never]
   flowtype/space-before-generic-bracket: [error, never]
@@ -187,9 +188,7 @@ rules:
   flowtype/generic-spacing: off
   flowtype/space-after-colon: off
   flowtype/object-type-delimiter: off
-
   # TODO: Replace with custom eslint rules.
-
   #######################
   # FLEXPORT CUSTOM RULES
   #######################
