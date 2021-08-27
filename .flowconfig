@@ -38,6 +38,7 @@ untyped-type-import
 .*/node_modules/flow-coverage-report/*
 .*/node_modules/unflowify/*
 <PROJECT_ROOT>/lib/.*
+<PROJECT_ROOT>/dist/.*
 ; <PROJECT_ROOT>/db/.*
 ; <PROJECT_ROOT>/config/.*
 .*/tmp/.*

@@ -9,4 +9,5 @@ package.json
 **/temp/**
 public/packs/**/*
 lib/**
+dist/**
 external/**/*
