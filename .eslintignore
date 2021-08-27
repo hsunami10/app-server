@@ -8,4 +8,5 @@ package.json
 **/tmp/**
 **/temp/**
 public/packs/**/*
+lib/**
 external/**/*

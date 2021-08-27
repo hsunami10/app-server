@@ -37,7 +37,7 @@ untyped-type-import
 .*/node_modules/jsonlint-lines/*
 .*/node_modules/flow-coverage-report/*
 .*/node_modules/unflowify/*
-; <PROJECT_ROOT>/lib/.*
+<PROJECT_ROOT>/lib/.*
 ; <PROJECT_ROOT>/db/.*
 ; <PROJECT_ROOT>/config/.*
 .*/tmp/.*
