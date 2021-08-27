@@ -1,17 +1,17 @@
 {
-  // Transpile order ends here. Bottom -> top.
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "current"
-        }
-      }
-    ],
-    "@babel/preset-flow"
-  ],
-  // Transpile order starts here. Top -> bottom.
-  // Plugins are always applied top to bottom.
-  "plugins": []
+	// Transpile order ends here. Bottom -> top.
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		],
+		"@babel/typescript"
+	],
+	// Transpile order starts here. Top -> bottom.
+	// Plugins are always applied top to bottom.
+	"plugins": []
 }

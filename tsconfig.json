@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"allowJs": false,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"lib": [
+			"es5",
+			"es6",
+			"es7",
+			"ES2017",
+			"ES2018",
+			"ES2019",
+			"ES2020",
+			"ESNext"
+		],
+		"module": "commonjs",
+		"moduleResolution": "node",
+		// Don't emit; allow Babel to transpile files.
+		"noEmit": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"rootDir": "./src",
+		"strict": true,
+		"target": "es6"
+	},
+	"include": ["src/**/*"],
+	"exclude": ["**/node_modules", "**/build", "**/lib", "**/dist", "**/*.md"]
+}

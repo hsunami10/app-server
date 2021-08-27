@@ -53,13 +53,13 @@ if output=$(grep -q "$BLOCK_COMMIT_PATTERN" $SOURCE_DIFFED_FILES); then
   exit 1
 fi
  
-JS_JSX_JSON_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.jsx' '*.js' '*.json'`
-if [ -n "$JS_JSX_JSON_DIFFED_FILES" ]; then
-  echo "$JS_JSX_JSON_DIFFED_FILES"
+TS_TSX_JSON_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.tsx' '*.ts' '*.json'`
+if [ -n "$TS_TSX_JSON_DIFFED_FILES" ]; then
+  echo "$TS_TSX_JSON_DIFFED_FILES"
   # Ensure there aren't prettier problems.
   echo "Running prettier..."
   set +e
-  PRETTIER_FILES=$(echo "$JS_JSX_JSON_DIFFED_FILES" | xargs yarn run --silent prettier --list-different 2>/dev/null)
+  PRETTIER_FILES=$(echo "$TS_TSX_JSON_DIFFED_FILES" | xargs yarn run --silent prettier --list-different 2>/dev/null)
   set -e
   if [ -n "$PRETTIER_FILES" ]; then
     echo "Your files aren't pretty. Let me fix that for you".
@@ -70,31 +70,32 @@ if [ -n "$JS_JSX_JSON_DIFFED_FILES" ]; then
   echo "prettier complete!"
 fi
 
-JS_JSX_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.jsx' '*.js'`
-if [ -n "$JS_JSX_DIFFED_FILES" ]; then
+TS_TSX_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.tsx' '*.ts'`
+if [ -n "$TS_TSX_DIFFED_FILES" ]; then
   # Ensure there aren't eslint problems.
   echo "Running eslint..."
-  if echo "$JS_JSX_DIFFED_FILES" | xargs yarn eslint ; then
+  if echo "$TS_TSX_DIFFED_FILES" | xargs yarn eslint ; then
     : # no-op
   else
     e=$? # return code from if
     if [ "${e}" -eq "1" ]; then
       echo "Your files aren't aren't linted correctly. Attempting to fix for you..."
-      echo "running yarn run eslint --fix $JS_JSX_DIFFED_FILES"
-      yarn run eslint --fix $JS_JSX_DIFFED_FILES
+      echo "running yarn run eslint --fix $TS_TSX_DIFFED_FILES"
+      yarn run eslint --fix $TS_TSX_DIFFED_FILES
     elif [ "${e}" -gt "1" ]; then
       echo "yarn eslint returned an exit code > 1."
       exit ${e}
     fi
   fi
   echo "eslint complete!"
+  git add $TS_TSX_DIFFED_FILES
 
-  # Run flow on changed files.
-  echo "$JS_JSX_DIFFED_FILES"
-  # Ensure types check out
-  echo "Running strict flow checks..."
-  yarn run flow --show-all-errors --max-warnings 0
-  git add $JS_JSX_DIFFED_FILES
+  # # Run flow on changed files.
+  # echo "$TS_TSX_DIFFED_FILES"
+  # # Ensure types check out
+  # echo "Running strict flow checks..."
+  # yarn run flow --show-all-errors --max-warnings 0
+  # git add $TS_TSX_DIFFED_FILES
 fi
 
 # RB_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.rb' '*.rbi'`

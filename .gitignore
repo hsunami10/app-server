@@ -74,7 +74,6 @@ node_modules
 # Coverage reports
 /coverage
 /sandbox/dashboard/app/coverage
-/flow-coverage
 /gems/*/coverage
 
 .byebug_history
@@ -82,8 +81,6 @@ node_modules
 webpack/.cache
 
 .vscode
-# VS Code js config, only applies to root ('/') as to avoid ignoring Nextjs's jsconfig.json
-/jsconfig.json
 
 /public/sitemap.xml.gz
 /public/sitemap1.xml.gz

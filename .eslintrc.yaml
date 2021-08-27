@@ -10,7 +10,7 @@ plugins:
   - lodash
   # - jest
   - autofix
-  - flowtype
+  - "@typescript-eslint"
 
 env:
   node: true
@@ -18,17 +18,18 @@ env:
   es2021: true
 
 settings:
-  flowtype:
-    onlyFilesWithFlowAnnotation: false
   import/ignore:
     - node_modules
 
-parser: "@babel/eslint-parser"
+parser: "@typescript-eslint/parser"
+parserOptions:
+  project:
+    - tsconfig.json
 
 rules:
   camelcase: [error, { properties: always, ignoreDestructuring: false }]
-  # Disabled for nodejs. Enable this for front-end.
-  no-console: 0
+  # TODO: Enable for FE.
+  # no-console: error
   no-constant-condition: error
   no-redeclare: [error, { builtinGlobals: true }]
   no-restricted-imports:
@@ -79,6 +80,7 @@ rules:
     - vars: all
       args: all
       argsIgnorePattern: ^_
+  prefer-rest-params: error
 
   # Shadowing isn't a very difficult concept. --dmnd
   no-shadow: 0
@@ -182,7 +184,9 @@ rules:
     - prefer-double
   autofix/indent:
     - error
-    - 2
+    - tab
+  autofix/no-var: error
+  autofix/prefer-const: error
   autofix/spaced-comment:
     - error
     - always
@@ -195,43 +199,6 @@ rules:
     - error
     - requireStringLiterals: true
 
-  #######################
-  # FLOWTYPE PLUGIN RULES
-  #######################
-
-  flowtype/boolean-style: [error, boolean]
-  flowtype/define-flow-type: error
-  flowtype/delimiter-dangle: off
-  flowtype/no-dupe-keys: error
-  flowtype/no-primitive-constructor-types: error
-  flowtype/no-weak-types:
-    [error, { "any": false, "Object": true, "Function": true }]
-  flowtype/require-parameter-type:
-    - error
-    - excludeParameterMatch: "^_"
-      excludeArrowFunctions: true
-  flowtype/require-valid-file-annotation:
-    [error, always, { "annotationStyle": block, "strict": true }]
-  flowtype/semi: [error, always]
-  flowtype/space-before-type-colon: [error, never]
-  flowtype/space-after-type-colon: [error, always]
-  flowtype/space-before-generic-bracket: [error, never]
-  flowtype/type-id-match: [error, "^\\$?([A-Z][a-z0-9]*)+"]
-  flowtype/union-intersection-spacing: [error, always]
-  flowtype/use-flow-type: error
-  flowtype/no-types-missing-file-annotation: [error]
-
-  # rules disabled for now due to amount of work needed
-  flowtype/require-return-type: off
-  flowtype/require-variable-type: off
-
-  # rules disabled because there's no good reason to enable
-  flowtype/sort-keys: off
-
-  # Cosmetic rules disabled because we use prettier
-  flowtype/generic-spacing: off
-  flowtype/space-after-colon: off
-  flowtype/object-type-delimiter: off
   ################################
   # TODO: Add custom eslint rules.
   ################################
