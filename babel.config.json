@@ -1,4 +1,5 @@
 {
+  // Transpile order ends here. Bottom -> top.
   "presets": [
     [
       "@babel/preset-env",
@@ -9,5 +10,8 @@
       }
     ],
     "@babel/preset-flow"
-  ]
+  ],
+  // Transpile order starts here. Top -> bottom.
+  // Plugins are always applied top to bottom.
+  "plugins": []
 }
