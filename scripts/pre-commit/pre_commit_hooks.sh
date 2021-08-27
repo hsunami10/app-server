@@ -94,6 +94,7 @@ if [ -n "$JS_JSX_DIFFED_FILES" ]; then
   # Ensure types check out
   echo "Running strict flow checks..."
   yarn run flow --show-all-errors --max-warnings 0
+  git add $JS_JSX_DIFFED_FILES
 fi
 
 # RB_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.rb' '*.rbi'`
