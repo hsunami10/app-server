@@ -39,7 +39,7 @@
   },
   "scripts": {
     "babel-node": "BABEL_ENV=node babel-node",
-    "build": "babel src/ -d lib",
+    "build": "babel src/ --out-dir lib --extensions '.ts','.tsx'",
     "eslint": "eslint --ext .ts,.tsx",
     "prettier": "prettier",
     "tsc": "tsc",

@@ -1,11 +1,8 @@
 
-.static_data_cache.json
-
-# Ignore bundler config
-.bundle
-
-# Ignore specific Gemfile.lock files
-
+# Ignore babel output dir.
+# TODO: Remove if needed.
+lib/
+dist/
 
 # Ignore env variables
 .env*
@@ -29,22 +26,12 @@ dump.rdb
 npm-debug.log
 codestats-debug.log
 tmp_sessions.copy
-mkmf.log
-# Running setup_pipeline_spec.rb generates this file, but it is supposed to be
-# dynamically generated during buildkite builds.
-/composite_pipeline.yml
-/dispatch_pipeline.yml
 
 # UPLOADS
 /public/system/*
 /public/pdfs/*
 /public/sitemap*
 /uploads/*
-
-# ctags
-.tags
-.gemtags
-.tags_sorted_by_file
 
 # precompiled assets
 /public/assets/*
@@ -73,23 +60,8 @@ node_modules
 
 # Coverage reports
 /coverage
-/sandbox/dashboard/app/coverage
-/gems/*/coverage
-
-.byebug_history
-
-webpack/.cache
 
 .vscode
-
-/public/sitemap.xml.gz
-/public/sitemap1.xml.gz
-
-# Don't check in relay graphql files (we automatically regenerate them)
-migratory_modules/__generated__/*
-
-# Don't check in the relay persisted queries json
-webpack/assets/javascripts/relay/queries.json
 
 # Allow .tmp and .temp extensions for ignored files everywhere
 *.tmp

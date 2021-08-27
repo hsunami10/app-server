@@ -9,7 +9,7 @@
 				}
 			}
 		],
-		"@babel/typescript"
+		"@babel/preset-typescript"
 	],
 	// Transpile order starts here. Top -> bottom.
 	// Plugins are always applied top to bottom.
