@@ -14,6 +14,8 @@ Therefore, tsc is currently used just for static type-checking (no compiling / t
 
 #### Which library to use for Postgres
 
+Decided to use objection.js and knex. 
+
 - [Why objection is better than ORM](https://www.jakso.me/blog/objection-to-orm-hatred)
 - [Knex db migrations](https://medium.com/patrik-bego/database-schema-migrations-with-nodejs-de9d9090b177)
 - https://stackoverflow.com/a/56040765
