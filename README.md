@@ -13,5 +13,4 @@
 - https://stackoverflow.com/a/39554555
 - https://rencore.com/blog/deploy-vs-dist-vs-lib-sharepoint-framework-build-folders/
 
-`lib/` - for Babel / transpiling
-`dist/` - for Webpack / bundling
+`lib/` - for Babel / transpiling, `dist/` - for Webpack / bundling
