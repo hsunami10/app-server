@@ -1,4 +1,7 @@
 package.json
+.eslintrc.yaml
+.prettierrc.yaml
+
 *__generated__*
 webpack/assets/javascripts/relay/queries.json
 **/.yarn/**
