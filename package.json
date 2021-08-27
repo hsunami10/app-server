@@ -42,6 +42,7 @@
   "scripts": {
     "babel-node": "BABEL_ENV=node babel-node",
     "eslint": "eslint --ext .js,.jsx",
-    "install": "yarn run flow-typed install"
+    "install": "yarn run flow-typed install",
+    "prettier": "prettier"
   }
 }

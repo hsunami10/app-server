@@ -214,10 +214,11 @@ rules:
     [error, always, { "annotationStyle": block, "strict": true }]
   flowtype/semi: [error, always]
   flowtype/space-before-type-colon: [error, never]
+  flowtype/space-after-type-colon: [error, always]
   flowtype/space-before-generic-bracket: [error, never]
   flowtype/type-id-match: [error, "^\\$?([A-Z][a-z0-9]*)+"]
   flowtype/union-intersection-spacing: [error, always]
-  flowtype/use-flow-type: [error]
+  flowtype/use-flow-type: error
   flowtype/no-types-missing-file-annotation: [error]
 
   # rules disabled for now due to amount of work needed
@@ -231,7 +232,6 @@ rules:
   flowtype/generic-spacing: off
   flowtype/space-after-colon: off
   flowtype/object-type-delimiter: off
-
   ################################
   # TODO: Add custom eslint rules.
   ################################
