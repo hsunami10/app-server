@@ -8,6 +8,7 @@ export default {
 	client: 'pg',
 	migrations: {
 		tableName: 'knex_migrations',
+		directory: '../db/migrations',
 	},
 	// TODO: Log using logger here.
 	// log: {
@@ -23,7 +24,7 @@ export default {
 			port: parseInt(process.env.POSTGRES_DATABASE_PORT || '5432', 10),
 			database: process.env.POSTGRES_DATABASE_NAME,
 			user: process.env.POSTGRES_DATABASE_USER,
-			password: undefined,
+			// password: undefined,
 		},
 	},
 
