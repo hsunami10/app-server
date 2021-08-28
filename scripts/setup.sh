@@ -6,6 +6,6 @@ if [ ! -d "${gitroot}" ]; then
 fi
 
 sh $gitroot/scripts/pre-commit/install_pre_commit_hook.sh
-# sh $gitroot/scripts/psql/install.sh
+sh $gitroot/scripts/psql/install.sh
 sh $gitroot/scripts/watchman/setup.sh
 
