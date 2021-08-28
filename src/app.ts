@@ -8,13 +8,8 @@ import { Model } from 'objection';
 
 import knexConfig from 'config/knexfile';
 
-dotenv.config();
+dotenv.config(); // TODO: { path: path.join(process.pwd(), '.env.development.local') }
 const env = process.env.NODE_ENV || 'development';
-
-console.log(process.env.NODE_ENV);
-
-// TODO: .env.development.local file isn't being seen?
-// But .env is?
 
 if (env !== 'development') {
 	process.exit(1);

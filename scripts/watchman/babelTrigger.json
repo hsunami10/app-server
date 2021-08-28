@@ -1,0 +1,10 @@
+[
+	"trigger",
+	".",
+	{
+		"name": "babel-build-trigger",
+		"expression": ["anyof", ["match", "src/**/*.ts", "wholename"]],
+		"command": ["yarn", "build"],
+		"append_files": true
+	}
+]
