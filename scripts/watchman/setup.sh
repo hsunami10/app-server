@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # https://medium.com/@aoc/simple-watchman-setup-ab006e97fb1d
+# https://facebook.github.io/watchman/docs/cmd/trigger.html#extended-syntax
 
 set -e
 

@@ -47,7 +47,6 @@
   },
   "scripts": {
     "babel-node": "BABEL_ENV=node babel-node",
-    "babel-watch": "yarn clean && yarn babel --watch src/ --extensions '.js','.jsx','.ts','.tsx' --out-dir=lib/",
     "build": "yarn clean && babel src/ --extensions '.js','.jsx','.ts','.tsx' --out-dir=lib/",
     "clean": "rm -rf lib/",
     "dev": "tsc && yarn build && nodemon lib/app.js",
@@ -57,19 +56,21 @@
     "db:create": "psql -U postgres -c \"CREATE DATABASE $(yarn -s db:name)\"",
     "db:drop": "psql -U postgres -c \"DROP DATABASE $(yarn -s db:name)\"",
     "db:install": "POSTGRES_DATABASE_NAME=$(yarn -s db:name) ./scripts/psql/install.sh",
-    "db:gen-migration": "knex migrate:make -x ts",
-    "db:migrate": "knex migrate:latest",
-    "db:migrate-down": "knex migrate:down",
-    "db:migrate-list": "knex migrate:list",
-    "db:migrate-up": "knex migrate:up",
+    "db:gen-migration": "knex --knexfile=lib/config/knexfile.js migrate:make -x ts",
+    "db:migrate": "knex --knexfile=lib/config/knexfile.js migrate:latest",
+    "db:migrate-down": "knex --knexfile=lib/config/knexfile.js migrate:down",
+    "db:migrate-list": "knex --knexfile=lib/config/knexfile.js migrate:list",
+    "db:migrate-up": "knex --knexfile=lib/config/knexfile.js migrate:up",
     "db:populate": "TODO: Finish this script.",
-    "db:rollback": "knex migrate:rollback",
-    "db:rollback-all": "knex migrate:rollback --all",
+    "db:rollback": "knex --knexfile=lib/config/knexfile.js migrate:rollback",
+    "db:rollback-all": "knex --knexfile=lib/config/knexfile.js migrate:rollback --all",
     "db:start-server": "pg_ctl -D /usr/local/var/postgres start",
     "db:stop-server": "pg_ctl -D /usr/local/var/postgres stop",
     "eslint": "eslint --ext .ts,.tsx",
     "prettier": "prettier",
     "tsc": "tsc",
-    "tsc-watch": "tsc --watch"
+    "tsc-watch": "tsc --watch",
+    "watchman": "scripts/watchman/setup.sh",
+    "watchman-stop": "watchman watch-del-all"
   }
 }

@@ -1,3 +1,69 @@
+### Setup
+
+Install VSCode
+
+#### Install brew packages
+
+```bash
+brew install postgresql git watchman ruby node nvm yarn emacs
+```
+
+#### Install [iTermocil](https://github.com/TomAnthony/itermocil)
+
+```bash
+brew install TomAnthony/brews/itermocil
+mkdir ~/.itermocil
+touch ~/.itermocil/app-server.yml
+itermocil --edit app-server
+```
+
+In `~/.itermocil/app-server.yml`:
+
+```yaml
+windows:
+  - name: Dev
+    root: ~/app-server
+    panes:
+      - sh ./scripts/watchman/setup.sh
+  - name: Watchers
+    root: ~/app-server
+    layout: even-horizontal
+    panes:
+      - yarn dev
+      - yarn tsc --watch
+```
+
+Then run:
+
+```bash
+itermocil app-server
+```
+
+##### Troubleshooting
+
+If you encounter the below error:
+
+```bash
+Error: Invalid formula: /usr/local/Homebrew/Library/Taps/tomanthony/homebrew-brews/Formula/squid.rb
+squid: Calling `sha256 "digest" => :tag` in a bottle block is disabled! Use `brew style --fix` on the formula to update the style or use `sha256 tag: "digest"` instead.
+Please report this issue to the tomanthony/brews tap (not Homebrew/brew or Homebrew/core), or even better, submit a PR to fix it:
+  /usr/local/Homebrew/Library/Taps/tomanthony/homebrew-brews/Formula/squid.rb:9
+
+Error: Cannot tap tomanthony/brews: invalid syntax in tap!
+```
+
+[Build the formula from sources:](https://github.com/TomAnthony/itermocil/issues/117#issuecomment-874879053)
+
+```bash
+git clone git@github.com:TomAnthony/homebrew-brews.git
+cd homebrew-brews/
+brew style --fix Formula
+brew install --build-from-source Formula/itermocil.rb
+mkdir ~/.itermocil # Continue with steps from above
+```
+
+
+
 ### Package Management
 
 #### `knex` and `objection`
