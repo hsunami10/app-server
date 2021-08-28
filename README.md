@@ -1,3 +1,14 @@
+### Package Management
+
+#### `knex` and `objection`
+
+The latest stable versions as of 08/27/2021 typescript type definitions are broken:
+
+- objection `v2.2.15`
+- knex `v0.95.10`
+
+Objection was upgraded with `yarn add objection@next` ([see github link here](https://github.com/Vincit/objection.js/issues/2012#issuecomment-881352171)) to `v3.0.0-alpha.4` which fixes the typing issue.
+
 ### Learning Resources
 
 #### Typescript

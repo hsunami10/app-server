@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"allowJs": false,
+		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"lib": [
@@ -19,10 +19,12 @@
 		"noEmit": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
+		"suppressImplicitAnyIndexErrors": true,
 		"rootDir": "./src",
+		"baseUrl": "./src",
 		"strict": true,
 		"target": "es6"
 	},
-	"include": ["src/**/*"],
+	"include": ["src"],
 	"exclude": ["**/node_modules", "**/build", "**/lib", "**/dist", "**/*.md"]
 }

@@ -13,5 +13,15 @@
 	],
 	// Transpile order starts here. Top -> bottom.
 	// Plugins are always applied top to bottom.
-	"plugins": []
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"root": ["./src"],
+				"alias": {
+					"underscore": "lodash"
+				}
+			}
+		]
+	]
 }

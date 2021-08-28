@@ -20,6 +20,11 @@ env:
 settings:
   import/ignore:
     - node_modules
+  # https://stackoverflow.com/a/58323590
+  import/resolver:
+    node:
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      moduleDirectory: ['node_modules', 'src/']
 
 parser: "@typescript-eslint/parser"
 parserOptions:
@@ -105,7 +110,7 @@ rules:
   #####################
 
   import/default: error
-  import/extensions: [error, ignorePackages, { js: never, jsx: never }]
+  import/extensions: [error, ignorePackages, { js: never, jsx: never, ts: never, tsx: never }]
   import/first: error
   import/named: error
   import/no-commonjs: error
@@ -165,12 +170,12 @@ rules:
   autofix/arrow-parens:
     - error
     - as-needed
-  autofix/capitalized-comments:
-    - error
-    - always
-    - ignorePattern: "console"
-      ignoreInlineComments: true
-      ignoreConsecutiveComments: true
+  # autofix/capitalized-comments:
+  #   - error
+  #   - always
+  #   - ignorePattern: "console"
+  #     ignoreInlineComments: true
+  #     ignoreConsecutiveComments: true
   autofix/dot-notation:
     - error
     - allowKeywords: false
