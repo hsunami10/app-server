@@ -47,7 +47,8 @@
   },
   "scripts": {
     "babel-node": "BABEL_ENV=node babel-node",
-    "build": "yarn clean && babel src/ --out-dir lib/ --extensions '.js','.jsx','.ts','.tsx'",
+    "babel-watch": "yarn clean && yarn babel --watch src/ --extensions '.js','.jsx','.ts','.tsx' --out-dir=lib/",
+    "build": "yarn clean && babel src/ --extensions '.js','.jsx','.ts','.tsx' --out-dir=lib/",
     "clean": "rm -rf lib/",
     "dev": "tsc && yarn build && nodemon lib/app.js",
     "db:name": "echo $(grep POSTGRES_DATABASE_NAME .env.development.local | cut -d '=' -f2)",
