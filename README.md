@@ -12,9 +12,9 @@ In the future, babel is definitely needed for transpiling in different envs.
 
 Therefore, tsc is currently used just for static type-checking (no compiling / transpiling) and babel is used for transpiling (removing types). Babel does not check for types when transpiling so that is done manually with the `yarn run tsc`.
 
-#### Which library to use for Postgres
+#### Postgres support
 
-Decided to use objection.js and knex. 
+We decided to use objection.js (for querying) and knex (for migrations).
 
 - [Why objection is better than ORM](https://www.jakso.me/blog/objection-to-orm-hatred)
 - [Knex db migrations](https://medium.com/patrik-bego/database-schema-migrations-with-nodejs-de9d9090b177)
