@@ -24,6 +24,9 @@
 		"baseUrl": "./src",
 		"strict": true,
 		"target": "es6"
+		// "paths": {
+		// 	"config/*": ["config/*"]
+		// }
 	},
 	"include": ["src"],
 	"exclude": ["**/node_modules", "**/build", "**/lib", "**/dist", "**/*.md"]

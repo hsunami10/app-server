@@ -178,7 +178,7 @@ rules:
   #     ignoreConsecutiveComments: true
   autofix/dot-notation:
     - error
-    - allowKeywords: false
+    - allowKeywords: true
   autofix/eqeqeq:
     - error
     - always

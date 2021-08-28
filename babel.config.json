@@ -15,12 +15,14 @@
 	// Plugins are always applied top to bottom.
 	"plugins": [
 		[
+			// Resolving non-relative paths: https://stackoverflow.com/a/67138091
 			"module-resolver",
 			{
-				"root": ["./src"],
+				"root": ["src"],
 				"alias": {
-					"underscore": "lodash"
-				}
+					"config": "./src/config/"
+				},
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
 			}
 		]
 	]
