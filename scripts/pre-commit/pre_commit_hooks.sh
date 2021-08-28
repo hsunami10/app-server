@@ -90,12 +90,12 @@ if [ -n "$TS_TSX_DIFFED_FILES" ]; then
   echo "eslint complete!"
   git add $TS_TSX_DIFFED_FILES
 
-  # # Run flow on changed files.
-  # echo "$TS_TSX_DIFFED_FILES"
-  # # Ensure types check out
-  # echo "Running strict flow checks..."
-  # yarn run flow --show-all-errors --max-warnings 0
-  # git add $TS_TSX_DIFFED_FILES
+  # Run tsc on changed files.
+  # Ensure types check out
+  echo "Running strict tsc checks..."
+  yarn tsc
+  git add $TS_TSX_DIFFED_FILES
+  echo "tsc type-checking complete!"
 fi
 
 # RB_DIFFED_FILES=`git diff HEAD --cached --name-only --diff-filter=ACMR -- '*.rb' '*.rbi'`
