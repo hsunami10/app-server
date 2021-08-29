@@ -33,7 +33,7 @@ parserOptions:
 
 # https://eslint.org/docs/user-guide/configuring/configuration-files#how-do-overrides-work
 overrides:
-  - files: src/**/migrations/**/*.js
+  - files: src/**/*.js
     rules:
       import/no-commonjs: off
 
@@ -189,7 +189,6 @@ rules:
     - error
     - always
     - null: never
-  autofix/implicit-arrow-linebreak: error
   autofix/jsx-quotes:
     - error
     - prefer-double

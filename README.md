@@ -77,6 +77,10 @@ Objection was upgraded with `yarn add objection@next` ([see github link here](ht
 
 ### Learning Resources
 
+#### [Bcrypt](https://www.npmjs.com/package/bcrypt)
+
+- https://gist.github.com/laurenfazah/f9343ae8577999d301334fc68179b485
+
 #### Typescript
 
 - https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/

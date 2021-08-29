@@ -2,11 +2,10 @@ import path from 'path';
 
 import express from 'express';
 import cors from 'cors';
-import Knex from 'knex';
 import dotenv from 'dotenv';
 import { Model } from 'objection';
 
-import knexConfig from 'config/knexfile';
+import knex from 'db/knex';
 
 dotenv.config(); // TODO: { path: path.join(process.pwd(), '.env.development.local') }
 const env = process.env.NODE_ENV || 'development';
@@ -14,8 +13,6 @@ const env = process.env.NODE_ENV || 'development';
 if (env !== 'development') {
 	process.exit(1);
 }
-
-const knex = Knex(knexConfig);
 Model.knex(knex);
 
 const app = express();

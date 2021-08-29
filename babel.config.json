@@ -19,9 +19,9 @@
 			"module-resolver",
 			{
 				"root": ["src"],
-				"alias": {
-					"config": "./src/config/"
-				},
+				// "alias": {
+				// 	"config": "./src/config/"
+				// },
 				"extensions": [".js", ".jsx", ".ts", ".tsx"]
 			}
 		]
