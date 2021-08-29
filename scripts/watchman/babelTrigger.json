@@ -3,7 +3,11 @@
 	".",
 	{
 		"name": "babel-build-trigger",
-		"expression": ["anyof", ["match", "src/**/*.ts", "wholename"]],
+		"expression": [
+			"anyof",
+			["match", "src/**/*.ts", "wholename"],
+			["match", "src/**/*.js", "wholename"]
+		],
 		"command": ["yarn", "build"],
 		"append_files": true
 	}

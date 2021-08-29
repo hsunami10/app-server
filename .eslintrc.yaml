@@ -31,6 +31,12 @@ parserOptions:
   project:
     - tsconfig.json
 
+# https://eslint.org/docs/user-guide/configuring/configuration-files#how-do-overrides-work
+overrides:
+  - files: src/**/migrations/**/*.js
+    rules:
+      import/no-commonjs: off
+
 rules:
   camelcase: [error, { properties: always, ignoreDestructuring: false }]
   # TODO: Enable for FE.

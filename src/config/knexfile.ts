@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
-import pg from 'pg';
+// import pg from 'pg';
 
 dotenv.config();
-pg.defaults.ssl = true;
+// pg.defaults.ssl = true;
 
 export default {
 	client: 'pg',
@@ -22,12 +22,17 @@ export default {
 			// and put into src/db/migrations directory as .ts files. Watchman sees this change and
 			// transpiles it to .js in lib/db/migrations directory.
 			directory: '../../src/db/migrations',
+			extension: 'js',
+		},
+		seeds: {
+			directory: '../../src/db/seeds',
 		},
 		connection: {
 			host: process.env.POSTGRES_DATABASE_HOST,
-			port: parseInt(process.env.POSTGRES_DATABASE_PORT || '5432', 10),
+			port: parseInt(process.env.POSTGRES_DATABASE_PORT || '5432'),
 			database: process.env.POSTGRES_DATABASE_NAME,
 			user: process.env.POSTGRES_DATABASE_USER,
+			charset: 'utf8',
 			// password: undefined,
 		},
 	},
