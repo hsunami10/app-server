@@ -4,6 +4,7 @@
 
 extends:
   - prettier
+  - plugin:promise/recommended
 
 plugins:
   - import
@@ -11,6 +12,7 @@ plugins:
   # - jest
   - autofix
   - "@typescript-eslint"
+  - promise
 
 env:
   node: true
@@ -140,7 +142,7 @@ rules:
     - member
 
   ######################
-  # AUTOFIX CUSTOM RULES
+  # AUTOFIX PLUGIN RULES
   ######################
 
   autofix/array-bracket-newline:
@@ -184,6 +186,13 @@ rules:
   autofix/valid-typeof:
     - error
     - requireStringLiterals: true
+  
+  ######################
+  # PROMISE PLUGIN RULES
+  ######################
+
+  promise/prefer-await-to-callbacks: error
+  promise/prefer-await-to-then: error
 
   ################################
   # TODO: Add custom eslint rules.
