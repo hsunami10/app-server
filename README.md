@@ -64,6 +64,10 @@ mkdir ~/.itermocil # Continue with steps from above
 
 
 
+### Database schema
+
+https://dbdiagram.io/d/5c66f857f7c5bb70c72f0802
+
 ### Package Management
 
 #### `knex` and `objection`

@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-	return knex.schema.raw(
+	await knex.schema.raw(
 		`
 		create table users (
 			id bigserial not null,
@@ -23,7 +23,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-	return knex.schema.raw(
+	await knex.schema.raw(
 		`
 		drop index users_updated_at;
 		drop index users_created_at;
