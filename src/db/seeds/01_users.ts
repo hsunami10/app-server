@@ -6,13 +6,19 @@ import * as faker from 'faker';
 import { hash } from '../../utils/bcrypt';
 
 export async function seed(knex: Knex): Promise<void> {
+	const numEntries = 100;
 	const users = [];
-	for (let i = 0; i < 100; i += 1) {
+	const promises = [];
+
+	for (let i = 0; i < numEntries; i += 1) {
+		promises.push(hash(faker.internet.password()));
+	}
+	const passwords = await Promise.all(promises);
+	for (let i = 0; i < numEntries; i += 1) {
 		users.push({
 			username: faker.internet.userName(),
 			email: faker.internet.email(),
-			// password: faker.internet.password(),
-			password: hash(faker.internet.password()),
+			password: passwords[i],
 			bio: faker.lorem.sentences(),
 		});
 	}

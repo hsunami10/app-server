@@ -52,7 +52,12 @@ rules:
     - patterns: # TODO: Create a custom rule.
       - .*
 
+  # Async / await rules
   no-return-await: error
+  no-async-promise-executor: error
+  no-await-in-loop: error
+  require-atomic-updates: error
+  require-await: error
   
   # We use leading underscores
   no-underscore-dangle: 0
