@@ -83,6 +83,9 @@ rules:
           ],
       },
     ]
+
+  no-return-await: error
+  
   # We use leading underscores
   no-underscore-dangle: 0
   no-use-before-define: 0

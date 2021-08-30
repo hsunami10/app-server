@@ -9,6 +9,7 @@ exports.up = function (knex) {
 			bio text,
 			created_at timestamp not null default current_timestamp,
 			updated_at timestamp not null default current_timestamp,
+			deleted_at timestamp,
 			primary key (id)
 		);
 

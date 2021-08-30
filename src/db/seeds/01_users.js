@@ -1,5 +1,7 @@
 const faker = require('faker');
 
+const hash = require('utils/hash');
+
 // NOTE: Should always match the schema.
 exports.seed = function (knex) {
 	const users = [];
@@ -7,7 +9,7 @@ exports.seed = function (knex) {
 		users.push({
 			username: faker.internet.userName(),
 			email: faker.internet.email(),
-			password: '', // TODO: hash password with bcrypt
+			password: hash(faker.internet.password()),
 			bio: faker.lorem.sentences(),
 		});
 	}
