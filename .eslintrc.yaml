@@ -36,6 +36,10 @@ overrides:
   - files: src/**/*.js
     rules:
       import/no-commonjs: off
+  - files:
+    - src/db/seeds/*.ts
+    rules:
+      no-restricted-imports: 0
 
 rules:
   camelcase: [error, { properties: always, ignoreDestructuring: false }]
@@ -44,45 +48,9 @@ rules:
   no-constant-condition: error
   no-redeclare: [error, { builtinGlobals: true }]
   no-restricted-imports:
-    [
-      error,
-      {
-        paths:
-          [
-            {
-              name: "lodash",
-              importNames:
-                [
-                  "set",
-                  "get",
-                  "chain",
-                  "bind",
-                  "partial",
-                  "max",
-                  "min",
-                  "isFunction",
-                  "isBoolean",
-                  "isNil",
-                  "isUndefined",
-                  "isNull",
-                  "filter",
-                  "reject",
-                  "compact",
-                  "some",
-                  "every",
-                  "map",
-                  "reduce",
-                  "isEmpty",
-                  "size",
-                  "assign",
-                  "merge",
-                  "extend",
-                ],
-              message: "Don't use these lodash methods; any typed.",
-            },
-          ],
-      },
-    ]
+    - error
+    - patterns: # TODO: Create a custom rule.
+      - .*
 
   no-return-await: error
   

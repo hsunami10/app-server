@@ -22,10 +22,11 @@ export default {
 			// and put into src/db/migrations directory as .ts files. Watchman sees this change and
 			// transpiles it to .js in lib/db/migrations directory.
 			directory: '../../src/db/migrations',
-			extension: 'js',
+			extension: 'ts',
 		},
 		seeds: {
 			directory: '../../src/db/seeds',
+			extension: 'ts',
 		},
 		connection: {
 			host: process.env.POSTGRES_DATABASE_HOST,

@@ -1,4 +1,6 @@
-exports.up = function (knex) {
+import { Knex } from 'knex';
+
+export async function up(knex: Knex): Promise<void> {
 	return knex.schema.raw(
 		`
 		create table users (
@@ -18,9 +20,9 @@ exports.up = function (knex) {
 		create index users_updated_at on users (updated_at);
 		`,
 	);
-};
+}
 
-exports.down = function (knex) {
+export async function down(knex: Knex): Promise<void> {
 	return knex.schema.raw(
 		`
 		drop index users_updated_at;
@@ -30,4 +32,4 @@ exports.down = function (knex) {
 		drop table users;
 		`,
 	);
-};
+}
