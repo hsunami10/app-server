@@ -1,8 +1,8 @@
-### Setup
+## Setup
 
-#### Install VSCode
+### Install VSCode
 
-##### Extensions
+#### Extensions
 - vscode-icons
 - YAML
 - React Native Tools
@@ -21,13 +21,13 @@
 - AutoComplate Shell
 - Shell Syntax
 
-#### Install brew packages
+### Install brew packages
 
 ```bash
 brew install postgresql git watchman ruby node nvm yarn emacs
 ```
 
-#### Install [iTermocil](https://github.com/TomAnthony/itermocil)
+### Install [iTermocil](https://github.com/TomAnthony/itermocil)
 
 ```bash
 brew install TomAnthony/brews/itermocil
@@ -58,7 +58,7 @@ Then run:
 itermocil app-server
 ```
 
-##### Troubleshooting
+#### Troubleshooting
 
 If you encounter the below error:
 
@@ -81,15 +81,23 @@ brew install --build-from-source Formula/itermocil.rb
 mkdir ~/.itermocil # Continue with steps from above
 ```
 
+## General Troubleshooting
 
+### Postgresql
 
-### Database schema
+```bash
+waiting for server to start....2022-06-25 19:19:10.190 CDT [20122] FATAL:  database files are incompatible with server
+2022-06-25 19:19:10.190 CDT [20122] DETAIL:  The data directory was initialized by PostgreSQL version 13, which is not compatible with this version 14.4.
+```
+Run: `brew postgresql-upgrade-database` per [this link](https://stackoverflow.com/a/53745770).
+
+## Database schema
 
 https://dbdiagram.io/d/5c66f857f7c5bb70c72f0802
 
-### Package Management
+## Package Management
 
-#### `knex` and `objection`
+### `knex` and `objection`
 
 The latest stable versions as of 08/27/2021 typescript type definitions are broken:
 
@@ -98,13 +106,13 @@ The latest stable versions as of 08/27/2021 typescript type definitions are brok
 
 Objection was upgraded with `yarn add objection@next` ([see github link here](https://github.com/Vincit/objection.js/issues/2012#issuecomment-881352171)) to `v3.0.0-alpha.4` which fixes the typing issue.
 
-### Learning Resources
+## Learning Resources
 
-#### [Bcrypt](https://www.npmjs.com/package/bcrypt)
+### [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 - https://gist.github.com/laurenfazah/f9343ae8577999d301334fc68179b485
 
-#### Typescript
+### Typescript
 
 - https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/
 - https://iamturns.com/typescript-babel/
@@ -116,7 +124,7 @@ In the future, babel is definitely needed for transpiling in different envs.
 
 Therefore, tsc is currently used just for static type-checking (no compiling / transpiling) and babel is used for transpiling (removing types). Babel does not check for types when transpiling so that is done manually with the `yarn run tsc`.
 
-#### Postgres support
+### Postgres support
 
 We decided to use objection.js (for querying) and knex (for migrations).
 
@@ -125,7 +133,7 @@ We decided to use objection.js (for querying) and knex (for migrations).
 - https://stackoverflow.com/a/56040765
 - [ORMs are anti-patterns](https://seldo.com/posts/orm_is_an_antipattern)
 
-#### Webpack
+### Webpack
 
 - [When to use and why](https://blog.andrewray.me/webpack-when-to-use-and-why/)
 
@@ -136,7 +144,7 @@ If your application is fairly small, and you don't have many static assets and y
 - https://stackoverflow.com/questions/37788142/webpack-for-back-end
 - [Webpack with NodeJS](https://www.section.io/engineering-education/webpack/)
 
-#### Babel
+### Babel
 
 - [Presets, plugins, config basics](https://medium.com/welldone-software/babel-js-guide-part-1-the-absolute-must-know-basics-plugins-presets-and-config-28150c199e45)
 - [Babel beginner's guide](https://www.sitepoint.com/babel-beginners-guide/)
@@ -145,7 +153,7 @@ If your application is fairly small, and you don't have many static assets and y
 
 - [Correct way to compile with babel](https://gist.github.com/ncochard/6cce17272a069fdb4ac92569d85508f4#file-babel-webpack-md)
 
-#### Project directory / file structure:
+### Project directory / file structure:
 
 - https://gist.github.com/tracker1/59f2c13044315f88bee9
 - https://stackoverflow.com/a/22844164
